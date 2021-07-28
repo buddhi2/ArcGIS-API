@@ -34,31 +34,33 @@
         FeatureLayer
       ) => {
         const map = new Map({
-          basemap: "hybrid"
+          basemap: "hybrid"//Default Base Map (hybrid,osm,topo,streets,gray,oceans,etc..)
         });
 
+        
         const view = new MapView({
-          container: "viewDiv",
+          container: "viewDiv",//HTML Div ID for MAP area
           map: map,
-          zoom: 7,
-          center: [80,7.5]
+          zoom: 7, //default zoom level
+          center: [80,7.5] //default center point longitude and latitude
         });
 
         /********************
-         * Add feature layer
+         * Add one or more feature layer as below
          ********************/
 
-        // Carbon storage of trees in Warren Wilson College.
-        const featureLayer = new FeatureLayer({
+        // MOH Feature Layer published on NSDI server.
+        const MOHLayer = new FeatureLayer({
           url: "https://gisapps.nsdi.gov.lk/server/rest/services/SLNSDI/Health/MapServer/2"
         });
 
-        map.add(featureLayer);
+        map.add(MOHLayer);
       });
     </script>
   </head>
 
   <body>
+    <!--Map Area in viewDiv-->
     <div id="viewDiv"></div>
   </body>
 </html>
